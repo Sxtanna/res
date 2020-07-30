@@ -39,7 +39,7 @@ sourceSets {
 publishing {
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/Sxtanna")
+            url = uri("https://maven.pkg.github.com/Sxtanna/res")
             
             credentials {
                 username = project.hasProperty("githubPackagesUser") ? githubPackagesUser : System.getenv("GITHUB_ACTOR")
