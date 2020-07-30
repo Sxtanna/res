@@ -35,3 +35,22 @@ sourceSets {
     test.compileClasspath += configurations.compileOnly
     test.runtimeClasspath += configurations.compileOnly
 }
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/Sxtanna")
+            
+            credentials {
+                username = project.hasProperty("githubPackagesUser") ? githubPackagesUser : System.getenv("GITHUB_ACTOR")
+                password = project.hasProperty("githubPackagesAuth") ? githubPackagesAuth : System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
